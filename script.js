@@ -31,7 +31,6 @@ const songs = [
   }
 ];
 
-
 // ======== CONTROLS ================
 // Check if playing
 let isPlaying = false;
@@ -55,3 +54,35 @@ function pauseSong() {
 // PLAY or PAUSE Event Listener
 // add play-pause Event Listener to playBtn
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+
+// ======== UPDATE DOM ================
+function loadSong(song) {
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  music.src = `music/${song.name}.mp3`;
+  image.src = `img/${song.name}.jpg`;
+}
+
+// Current Song
+let songIndex = 0;
+
+// Next Song
+function nextSong() {
+  songIndex < songs.length - 1 ? songIndex++ : songIndex = 0;
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+// Prev Song
+function prevSong() {
+  songIndex <= 0 ? songIndex = songs.length - 1 : songIndex--;
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+// On Load - Select First Song
+loadSong(songs[songIndex]);
+
+// Even Listeners
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
