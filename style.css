@@ -1,5 +1,3 @@
-/* Images created by: https://unsplash.com/@pawel_czerwinski */
-
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&display=swap');
 
 html {
@@ -26,12 +24,21 @@ body {
 }
 
 .img-container {
-
+  height: 300px;
+  width: 300px;
   position: relative;
   top: -50px;
   left: 50px;
 }
 
+/* target image to fit with the container */
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+}
 
 h2 {
   font-size: 25px;
