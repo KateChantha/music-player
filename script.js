@@ -94,12 +94,13 @@ function updateProgressBar(e) {
     const { duration, currentTime } = e.srcElement;
     // console.log(duration, currentTime)
 
-    // Update progress bar width
+    // Update progress bar width ----
     const progressPercent = (currentTime / duration) * 100;
     // Access progress.style.width to dynamically manipulate width of class="progress" in css 
     // assaign width value type in string
     progress.style.width = `${progressPercent}%`;
-    // Calculate display for duration
+
+    // Calculate display for duration ----
     const durationMinutes = Math.floor(duration / 60);
     // *** use % remainder operator to calcutate seconds
     let durationSeconds = Math.floor(duration % 60);
@@ -111,9 +112,8 @@ function updateProgressBar(e) {
       durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
     }
 
-    // Calculate display for current
+    // Calculate display for current ----
     const currentMinutes = Math.floor(currentTime / 60);
-    // *** use % remainder operator to calcutate seconds
     let currentSeconds = Math.floor(currentTime % 60);
     if (currentSeconds < 10) {
       currentSeconds = `0${currentSeconds}`
@@ -122,7 +122,24 @@ function updateProgressBar(e) {
   }
 }
 
+// Set Progress Bar
+function setProgressBar(e) {
+  // console.log('setProgressBar', e);
+  const width = this.clientWidth;
+  // const width2 = e.srcElement.clientWidth
+  // console.log("width", width, width2)
+  const clickX = e.offsetX;
+  // console.log("clickX", clickX)
+
+  const { duration } = music;
+  console.log("percentage", clickX / width)
+  console.log("duration in second", (clickX / width) * duration)
+  // using 'audio' currentTime attribute to set/changing current time
+  music.currentTime = (clickX / width) * duration;
+}
+
 // ===== EVENT LISTENRS =============
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
+progressContainer.addEventListener('click', setProgressBar);
