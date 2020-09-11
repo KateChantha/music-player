@@ -132,8 +132,8 @@ function setProgressBar(e) {
   // console.log("clickX", clickX)
 
   const { duration } = music;
-  console.log("percentage", clickX / width)
-  console.log("duration in second", (clickX / width) * duration)
+  // console.log("percentage", clickX / width)
+  // console.log("duration in second", (clickX / width) * duration)
   // using 'audio' currentTime attribute to set/changing current time
   music.currentTime = (clickX / width) * duration;
 }
@@ -141,5 +141,7 @@ function setProgressBar(e) {
 // ===== EVENT LISTENRS =============
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+// auto play next song when current song is ended
+music.addEventListener('ended', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', setProgressBar);
