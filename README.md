@@ -2,7 +2,7 @@
 
 This is a music player interface where a user can play, pause, skip, rewind, and click the progress bar to seek different parts of the track.
 
-# Stretch Features
+## Stretch Features
 
 [] Add the event listener for a volume control. 
 
