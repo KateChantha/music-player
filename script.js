@@ -106,8 +106,10 @@ function updateProgressBar(e) {
     if (durationSeconds < 10) {
       durationSeconds = `0${durationSeconds}`
     }
-    // console.log('seconds: ', durationSeconds);
-    durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+    // Delay display duration elements when switching song to avoid NaN by checking if durationSeconds is loaded
+    if (durationSeconds) {
+      durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
   }
 }
 
